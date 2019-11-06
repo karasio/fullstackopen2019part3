@@ -63,13 +63,15 @@ app.post('/api/persons', (request, response) => {
   const body = request.body;
 
   if (!body.name) {
-    return response.status(400).json({
+    console.log("Body", body);
+    return response.status(404).json({
       error: 'name missing'
     })
   }
 
   if(!body.number) {
-    return response.status(400).json({
+    console.log("Body", body);
+    return response.status(404).json({
       error: 'number missing'
     })
   }
@@ -77,8 +79,9 @@ app.post('/api/persons', (request, response) => {
   let alreadyAdded = false;
   persons.forEach(value => {
     if(value.name === body.name) {
+      console.log("Body", body);
       alreadyAdded = true;
-      return response.status(400).json({
+      return response.status(404).json({
         error: 'Name must be unique'
       })
     }
@@ -90,6 +93,7 @@ app.post('/api/persons', (request, response) => {
       number: body.number,
       id: generateId()
     };
+
     persons = persons.concat(person);
     response.json(person);
 
