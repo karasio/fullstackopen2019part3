@@ -27,9 +27,9 @@ let persons = [
   }
 ];
 
-app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
+app.use(cors());
 
 app.get('/info', (request, response) => {
   const date = new Date();
@@ -108,7 +108,7 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end();
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 });
