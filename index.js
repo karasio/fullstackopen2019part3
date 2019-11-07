@@ -30,6 +30,7 @@ let persons = [
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(cors());
+app.use(express.static('build'));
 
 app.get('/info', (request, response) => {
   const date = new Date();
