@@ -20,7 +20,7 @@ const requestLogger = (request, response, next) => {
 };
 
 app.use(morgan('tiny'));
-app.use(requestLogger);
+//app.use(requestLogger);
 
 let persons = [
 //   {
